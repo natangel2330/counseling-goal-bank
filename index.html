@@ -158,4 +158,197 @@ Elementary: {
         Anxiety: {
             goal: "Student will use coping strategies to reduce anxiety-related behaviors in school settings.",
             objectives: [
-                "Identify triggers
+                "Identify triggers",
+                "Practice coping strategies",
+                "Use strategies independently"
+            ],
+            progress: [
+                "Teacher reports",
+                "Behavior data",
+                "Student self-monitoring"
+            ],
+            sessions: [
+                "Deep breathing",
+                "Worry management",
+                "Relaxation activities"
+            ],
+            teacher: [
+                "Provide reassurance",
+                "Teach coping reminders",
+                "Allow breaks when needed"
+            ],
+            parent: [
+                "Discuss worries",
+                "Practice coping skills",
+                "Encourage problem solving"
+            ]
+        }
+    }
+
+},
+
+Middle: {
+
+    Autism: {
+        "Friendship Skills": {
+            goal: "Student will demonstrate age-appropriate friendship skills across school settings in 4 of 5 observed opportunities.",
+            objectives: [
+                "Initiate conversations",
+                "Maintain reciprocal exchanges",
+                "Demonstrate perspective taking"
+            ],
+            progress: [
+                "Social skills rubric",
+                "Teacher observation",
+                "Counselor observation"
+            ],
+            sessions: [
+                "Conversation practice",
+                "Role-playing",
+                "Perspective-taking activities"
+            ],
+            teacher: [
+                "Facilitate structured peer interaction",
+                "Provide feedback",
+                "Identify peer supports"
+            ],
+            parent: [
+                "Arrange social opportunities",
+                "Practice conversation skills",
+                "Discuss friendship expectations"
+            ]
+        }
+    },
+
+    General: {
+        "Self-Esteem": {
+            goal: "Student will demonstrate improved self-confidence and positive self-perception in 4 of 5 opportunities.",
+            objectives: [
+                "Identify strengths",
+                "Use positive self-talk",
+                "Complete challenging tasks"
+            ],
+            progress: [
+                "Self-rating scale",
+                "Teacher input",
+                "Counselor notes"
+            ],
+            sessions: [
+                "Strength inventory",
+                "Growth mindset activities",
+                "Success reflections"
+            ],
+            teacher: [
+                "Provide positive feedback",
+                "Highlight strengths",
+                "Support risk taking"
+            ],
+            parent: [
+                "Celebrate progress",
+                "Encourage independence",
+                "Model positive self-talk"
+            ]
+        }
+    }
+
+},
+
+High: {
+
+    General: {
+        Anxiety: {
+            goal: "Student will independently manage anxiety using learned coping strategies in academic and social settings.",
+            objectives: [
+                "Recognize early warning signs",
+                "Apply coping strategies",
+                "Advocate for needed supports"
+            ],
+            progress: [
+                "Self-monitoring logs",
+                "Teacher feedback",
+                "Counselor review"
+            ],
+            sessions: [
+                "Stress management",
+                "Cognitive restructuring",
+                "Self-advocacy training"
+            ],
+            teacher: [
+                "Offer check-ins",
+                "Provide organizational support",
+                "Reduce unnecessary stressors"
+            ],
+            parent: [
+                "Support planning",
+                "Discuss coping skills",
+                "Monitor stress levels"
+            ]
+        }
+    }
+
+}
+};
+
+function list(items){
+    return "<ul>" + items.map(x => `<li>${x}</li>`).join("") + "</ul>";
+}
+
+function generate(){
+
+    const grade = document.getElementById("grade").value;
+    const disability = document.getElementById("disability").value;
+    const need = document.getElementById("need").value;
+
+    const result = data?.[grade]?.[disability]?.[need];
+
+    const output = document.getElementById("output");
+
+    if(!result){
+        output.innerHTML =
+        `<div class="error">
+            No goal bank entry exists for this combination yet.
+        </div>`;
+        return;
+    }
+
+    output.innerHTML = `
+
+    <div class="card goal">
+        <h3>Annual Goal</h3>
+        <p>${result.goal}</p>
+    </div>
+
+    <div class="card objectives">
+        <h3>Objectives</h3>
+        ${list(result.objectives)}
+    </div>
+
+    <div class="card progress">
+        <h3>Progress Monitoring</h3>
+        ${list(result.progress)}
+    </div>
+
+    <div class="card sessions">
+        <h3>Session Ideas</h3>
+        ${list(result.sessions)}
+    </div>
+
+    <div class="card teacher">
+        <h3>Teacher Supports</h3>
+        ${list(result.teacher)}
+    </div>
+
+    <div class="card parent">
+        <h3>Parent Supports</h3>
+        ${list(result.parent)}
+    </div>
+
+    `;
+}
+
+generate();
+
+</script>
+
+</body>
+</html>
