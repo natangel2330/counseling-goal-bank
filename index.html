@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counseling Goal Bank Generator</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.select-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.card {
+    padding: 18px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.goal { background:#dbeafe; }
+.objectives { background:#dcfce7; }
+.progress { background:#f3e8ff; }
+.sessions { background:#fef3c7; }
+.teacher { background:#cffafe; }
+.parent { background:#fce7f3; }
+
+ul {
+    margin-top: 8px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.hidden {
+    display:none;
+}
+
+.error {
+    background:#fee2e2;
+    padding:15px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Counseling Goal Bank Generator</h1>
+<p>Select options and generate counseling goals and supports.</p>
+
+<div class="select-grid">
+
+<select id="grade">
+    <option>Elementary</option>
+    <option selected>Middle</option>
+    <option>High</option>
+</select>
+
+<select id="disability">
+    <option>General</option>
+    <option selected>Autism</option>
+</select>
+
+<select id="need">
+    <option>Anxiety</option>
+    <option>Self-Esteem</option>
+    <option selected>Friendship Skills</option>
+</select>
+
+</div>
+
+<button onclick="generate()">Generate</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+const data = {
+
+Elementary: {
+
+    Autism: {
+        Anxiety: {
+            goal: "Student will use coping strategies to manage feelings of anxiety in 4 of 5 opportunities.",
+            objectives: [
+                "Identify feelings associated with anxiety.",
+                "Use a visual coping tool.",
+                "Request help appropriately."
+            ],
+            progress: [
+                "Counselor data",
+                "Teacher checklist",
+                "Student rating scale"
+            ],
+            sessions: [
+                "Feelings identification",
+                "Calm-down toolbox",
+                "Social stories"
+            ],
+            teacher: [
+                "Provide visual supports",
+                "Preview schedule changes",
+                "Use calm prompts"
+            ],
+            parent: [
+                "Practice coping skills at home",
+                "Use consistent routines",
+                "Reinforce self-advocacy"
+            ]
+        }
+    },
+
+    General: {
+        Anxiety: {
+            goal: "Student will use coping strategies to reduce anxiety-related behaviors in school settings.",
+            objectives: [
+                "Identify triggers
